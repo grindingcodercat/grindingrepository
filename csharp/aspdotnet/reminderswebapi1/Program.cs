@@ -1,4 +1,7 @@
 
+using reminderswebapi1.Services;
+using Scalar.AspNetCore;
+
 namespace reminderswebapi1
 {
     public class Program
@@ -8,6 +11,8 @@ namespace reminderswebapi1
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddSingleton<IToDoService, ToDoService>();
+
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
@@ -19,6 +24,7 @@ namespace reminderswebapi1
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+                app.MapScalarApiReference("/");
             }
 
             app.UseHttpsRedirection();
