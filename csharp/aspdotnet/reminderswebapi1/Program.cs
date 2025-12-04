@@ -12,7 +12,7 @@ namespace reminderswebapi1
 
             // Add services to the container.
             builder.Services.AddSingleton<IToDoService, ToDoService>();
-
+            builder.Services.AddValidation();
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

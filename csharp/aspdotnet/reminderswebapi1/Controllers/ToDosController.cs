@@ -20,19 +20,26 @@ namespace reminderswebapi1.Controllers
         }
 
 
-        // GET: api/<ToDosController>
+        /// <summary>
+        /// Gets a list of all ToDos
+        /// </summary>
+        /// <returns>A list of ToDos</returns>
         [HttpGet]
-        public IEnumerable<ToDo> Get()
+        public ActionResult<IEnumerable<ToDo>> Get()
         {
             var items = _todosService.GetToDos();
             return items;
         }
 
-        // GET api/<ToDosController>/5
+        /// <summary>
+        /// Gets a ToDo item by id
+        /// </summary>
+        /// <param name="id">The id of the item</param>
+        /// <returns>A ToDo Item</returns>
         [HttpGet("{id}")]
-        public ToDo Get(int id)
+        public ActionResult<ToDo> Get(int id)
         {
-            var item = _todosService.GetTo(id);
+            var item = _todosService.GetToDo(id);
 
             if (item == null)
             {
@@ -42,22 +49,36 @@ namespace reminderswebapi1.Controllers
             return item;
         }
 
-        // POST api/<ToDosController>
+        /// <summary>
+        /// Creates a ToDo item
+        /// </summary>
+        /// <param name="title">The title of the Item</param>
+        /// <param name="description">The description of the item</param>
+        /// <returns>The created item</returns>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<ToDo> Post([FromBody] ToDo todo)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
+
+            ToDo result = _todosService.CreateToDo(todo.Title, todo.Description);
+            return result;
         }
 
         // PUT api/<ToDosController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public ActionResult<ToDo> Put([FromBody] ToDo todo)
         {
+            return null;
         }
 
         // DELETE api/<ToDosController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult<ToDo> Delete(int id)
         {
+            return null;
         }
     }
 }
