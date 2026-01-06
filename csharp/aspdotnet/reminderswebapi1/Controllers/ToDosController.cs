@@ -66,7 +66,7 @@ namespace reminderswebapi1.Controllers
             ToDo result = _todosService.CreateToDo(todo.Title, todo.Description);
             return result;
         }
-
+        /*
         // PUT api/<ToDosController>/5
         [HttpPut("{id}")]
         public ActionResult<ToDo> Put([FromBody] ToDo todo)
@@ -79,6 +79,6 @@ namespace reminderswebapi1.Controllers
         public ActionResult<ToDo> Delete(int id)
         {
             return null;
-        }
+        }*/
     }
 }
