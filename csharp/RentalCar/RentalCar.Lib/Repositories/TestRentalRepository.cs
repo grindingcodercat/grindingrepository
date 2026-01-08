@@ -5,8 +5,11 @@ using System.Text;
 
 namespace RentalCar.Lib.Repositories
 {
-    public class TestRentalRepository
+    public class TestRentalRepository : IRentalRepository
     {
+        private static long _vehicleRegistrationId = 1;
+        private static long _vehicleReturnId = 1;
+
         /// <summary>
         /// Data structures to store data for this exercise.
         /// In a true production system this data would probably have been persisted 
@@ -22,6 +25,7 @@ namespace RentalCar.Lib.Repositories
         /// <param name="model"></param>
         public void RegisterCarPickUp(VehiclePickupModel model)
         {
+            model.BookingNumber = _vehicleRegistrationId++;
             _vehiclePickups.Add(model);
         }
 
@@ -33,6 +37,12 @@ namespace RentalCar.Lib.Repositories
         public void RegisterCarReturn(VehicleReturnModel model)
         {
             _vehicleReturns.Add(model);
+        }
+
+        public VehiclePickupModel GetVehiclePickupData(long bookingNumber)
+        {
+            VehiclePickupModel result = _vehiclePickups.FirstOrDefault(p => p.BookingNumber == bookingNumber);
+            return result;
         }
     }
 }

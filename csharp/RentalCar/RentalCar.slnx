@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="RentalCar.Lib.Tests/RentalCar.Lib.Tests.csproj" />
   <Project Path="RentalCar.Lib/RentalCar.Lib.csproj" />
+  <Project Path="RentalCar.WebApi/RentalCar.WebApi.csproj" Id="28dd27e3-9c97-4fe7-b556-0833da9b8a1c" />
 </Solution>
