@@ -35,41 +35,15 @@ namespace CarRentalWebApi.Controllers
                 return BadRequest();
             }
 
-            RentalReceiptDto price = _vehicleRentalService.CalculateRentalPrice(vehicleReturn.RentalBookingNumber, 1.5, 1.6);
+            // For the purpose of this demo, we will use hard coded values.
+            // In a real production system these values will probably be retrieved
+            // elsewhere from a database.
+            double baseDayRental = 1.5;
+            double baseKmPrice = 1.6;
+
+            RentalReceiptDto price = _vehicleRentalService.CalculateRentalPrice(vehicleReturn.RentalBookingNumber, baseDayRental, baseKmPrice);
 
             return Ok(price);
-        }
-
-        // GET: api/<CarRentalController>
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/<CarRentalController>/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
-
-        // POST api/<CarRentalController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<CarRentalController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<CarRentalController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }

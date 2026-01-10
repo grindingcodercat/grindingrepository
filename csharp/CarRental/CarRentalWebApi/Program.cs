@@ -1,4 +1,5 @@
 
+using CarRentalWebApi.Services;
 using Scalar.AspNetCore;
 
 namespace CarRentalWebApi
@@ -10,6 +11,8 @@ namespace CarRentalWebApi
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddSingleton<IRentalRepository, TestRentalRepository>();
+            builder.Services.AddTransient<IVehicleRentalService, VehicleRentalService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi

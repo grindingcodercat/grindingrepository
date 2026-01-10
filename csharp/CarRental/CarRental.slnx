@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="CarRentalWebApi/CarRentalWebApi.csproj" />
+  <Project Path="CarTentalTests/CarTentalTests.csproj" Id="3f5b59ac-12c9-407a-bede-dbc2f505b26b" />
 </Solution>
